@@ -10,7 +10,7 @@ using namespace std;
 
 
 
-
+ 
 int main(void)
 {
 	ifstream myfile;
@@ -24,7 +24,7 @@ int main(void)
 	myfile.open("tinypix.ppm");
 	
 	//use getline outside the while loop for the first five lines
-	//Then while loop for the rest
+	//Then while loop for the rest of it
 
 	getline(myfile, line1);
 	cout << "Image Format: " << line1 << endl;
