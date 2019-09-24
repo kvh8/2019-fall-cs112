@@ -15,8 +15,21 @@ it into the desired output file.
 //then saves it on the users output file they want it saved to.
 
 /*
+	ifstream myfile;
+	string line1;
+	string line2;
+	string line3;
+	string line4;
+	string line5;
+	string line6;
+	string file_name;
+
 				type function_name(type source_file, type output_file)
 				{
+				cout << "Provide with the file you would like to be edited" << endl;
+				cin >> file_name;
+
+
 				...
 				will need an if-then probably to make sure the file
 				has things in it.
@@ -51,7 +64,20 @@ int main(void)
 	string line4;
 	string line5;
 	string line6;
+	string file_name;
 
+	/*
+	cout << "Provide with the file you would like to be edited" << endl;
+	cin >> file_name; 
+	*/
+
+
+	//use .open with myfile and the file name
+	// myfile.open(file_name);
+
+
+
+	//*******************
 	myfile.open("tinypix.ppm");
 
 	//use getline outside the while loop for the first five lines
