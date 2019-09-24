@@ -51,6 +51,28 @@ it into the desired output file.
 				}
 */
 
+//Function that turns the file into a vector
+
+vector<string> readfile(ifstream& some_file)
+{
+	vector<string> new_vector{};
+
+	if (some_file.is_open() == true)
+	{
+		string line;
+
+		while (some_file.good() == true)
+		{
+			getline(some_file, line);
+
+			new_vector.push_back(line);
+		}
+	}
+
+	return new_vector;
+}
+
+
 
 
 
@@ -66,22 +88,17 @@ int main(void)
 	string line6;
 	string file_name;
 
-	/*
+	
 	cout << "Provide with the file you would like to be edited" << endl;
 	cin >> file_name; 
-	*/
-
+	
+	myfile.open(file_name);
 
 	//use .open with myfile and the file name
 	// myfile.open(file_name);
 
+	myfile.open(file_name);
 
-
-	//*******************
-	myfile.open("tinypix.ppm");
-
-	//use getline outside the while loop for the first five lines
-	//Then while loop for the rest
 
 	getline(myfile, line1);
 	cout << "Image Format: " << line1 << endl;
@@ -97,7 +114,6 @@ int main(void)
 
 	getline(myfile, line5);
 	cout << "Data: " << endl << line5 << endl;
-
 
 	while (getline(myfile, line6))
 	{
