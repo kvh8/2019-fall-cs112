@@ -52,7 +52,7 @@ it into the desired output file.
 */
 
 //Function that turns the file into a vector
-
+/*
 vector<string> readfile(ifstream& some_file)
 {
 	vector<string> new_vector{};
@@ -73,9 +73,15 @@ vector<string> readfile(ifstream& some_file)
 }
 
 
+vector<string> readFile(const string& file_name)
+{
+	ifstream input{ file_name };
+	vector<string> new_vector = readFile(input);
+	input.close();
+	return new_vector;
+}
 
-
-
+*/
 
 int main(void)
 {
@@ -119,6 +125,8 @@ int main(void)
 	{
 		cout << line6 << endl;
 	}
+
+
 
 	myfile.close();
 
