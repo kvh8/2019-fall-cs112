@@ -93,18 +93,24 @@ int main(void)
 	string line5;
 	string line6;
 	string file_name;
+	vector<int> data_vector;
 
 	
 	cout << "Provide with the file you would like to be edited" << endl;
 	cin >> file_name; 
 	
-	myfile.open(file_name);
 
 	//use .open with myfile and the file name
 	// myfile.open(file_name);
 
 	myfile.open(file_name);
 
+	if (!myfile.good())
+	{
+		cout << "Error: Could not open file" << endl;
+
+		return 1;
+	}
 
 	getline(myfile, line1);
 	cout << "Image Format: " << line1 << endl;
@@ -121,9 +127,14 @@ int main(void)
 	getline(myfile, line5);
 	cout << "Data: " << endl << line5 << endl;
 
-	while (getline(myfile, line6))
+	while (myfile.good())
 	{
-		cout << line6 << endl;
+		getline(myfile, line6, ' ');
+
+		int t = stoi(line6);
+		
+		data_vector.push_back(t);
+
 	}
 
 
