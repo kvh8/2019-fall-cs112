@@ -7,139 +7,93 @@
 using namespace std;
 
 /*
-Expects a file, takes the 6 line and makes every third number a 0. Then it outputs,
+Expects a file, takes the line and makes every third number a 0. Then it outputs,
 it into the desired output file.
 */
 
 //so user provides input and output file. It reads from the out put file, makes the changes
 //then saves it on the users output file they want it saved to.
 
-/*
-	ifstream myfile;
-	string line1;
-	string line2;
-	string line3;
-	string line4;
-	string line5;
-	string line6;
-	string file_name;
 
-				type function_name(type source_file, type output_file)
-				{
-				cout << "Provide with the file you would like to be edited" << endl;
-				cin >> file_name;
-
-
-				...
-				will need an if-then probably to make sure the file
-				has things in it.
-				will need to declare the strings here and file
-
-				if(source_file.good() == true)
-				{
-				...
-				within this will need the getline then while loop - maybe
-				}
-
-				else
-				{
-				cout << "bad file" << endl;
-				}
-
-				-> or something like that
-
-				}
-*/
-
-//Function that turns the file into a vector
-/*
-vector<string> readfile(ifstream& some_file)
-{
-	vector<string> new_vector{};
-
-	if (some_file.is_open() == true)
-	{
-		string line;
-
-		while (some_file.good() == true)
-		{
-			getline(some_file, line);
-
-			new_vector.push_back(line);
-		}
-	}
-
-	return new_vector;
-}
-
-
-vector<string> readFile(const string& file_name)
-{
-	ifstream input{ file_name };
-	vector<string> new_vector = readFile(input);
-	input.close();
-	return new_vector;
-}
-
-*/
 
 int main(void)
 {
-	ifstream myfile;
+	ifstream infile;
+	ofstream outfile;
 	string line1;
 	string line2;
 	string line3;
 	string line4;
-	string line5;
-	string line6;
-	string file_name;
+	string in_file_name;
+	string out_file_name;
 	vector<int> data_vector;
 
 	
-	cout << "Provide with the file you would like to be edited" << endl;
-	cin >> file_name; 
+	//Ask user for the ppm file they want edited
+
+	cout << "Provide the name of the ppm file you would like to read from" << endl;
+	cin >> in_file_name; 
 	
+	cout << "Provide the name of the file you would like to write to" << endl;
+	cin >> out_file_name;
 
-	//use .open with myfile and the file name
-	// myfile.open(file_name);
 
-	myfile.open(file_name);
+	infile.open(in_file_name);
 
-	if (!myfile.good())
+	if (!infile.good())
 	{
 		cout << "Error: Could not open file" << endl;
 
 		return 1;
 	}
 
-	getline(myfile, line1);
-	cout << "Image Format: " << line1 << endl;
+	getline(infile, line1);
 
-	getline(myfile, line2, ' ');
-	cout << "Width: " << line2 << endl;
+	getline(infile, line2);
 
-	getline(myfile, line3);
-	cout << "Height: " << line3 << endl;
+	getline(infile, line3);
+	
 
-	getline(myfile, line4);
-	cout << "Max Pixel Value: " << line4 << endl;
 
-	getline(myfile, line5);
-	cout << "Data: " << endl << line5 << endl;
-
-	while (myfile.good())
+	while (infile.good() == true)
 	{
-		getline(myfile, line6, ' ');
-
-		int t = stoi(line6);
+		getline(infile, line4, ' ');
 		
-		data_vector.push_back(t);
+		if (line4 != "")
+		{
+			data_vector.push_back(stoi(line4));
+
+		}
 
 	}
 
+	// to switch every third number from its number to zero just set that 
+	// data = 0
+
+	for (int i = 0; i < data_vector.size(); i += 3)
+	{
+		data_vector[i] = 0;
+	}
+	
+	infile.close();
 
 
-	myfile.close();
+	//Writing to the file
+	
+	outfile.open(out_file_name);
+
+	outfile << line1 << endl
+		<< line2 << endl
+		<< line3 << endl;
+
+	for(int i = 0; i < data_vector.size(); i++)
+	{
+		outfile << data_vector[i] << ' ';
+	}
+
+	//try to put it in separate rows, need every 13 for one row
+
+
 
 
 	return 0;
