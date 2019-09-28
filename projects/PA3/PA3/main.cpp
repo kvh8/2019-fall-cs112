@@ -27,6 +27,7 @@ int main(void)
 	string in_file_name;
 	string out_file_name;
 	vector<int> data_vector;
+	//vector<int> data_converted;
 
 	
 	//Ask user for the ppm file they want edited
@@ -52,7 +53,6 @@ int main(void)
 	getline(infile, line2);
 
 	getline(infile, line3);
-	
 
 
 	while (infile.good() == true)
@@ -64,17 +64,41 @@ int main(void)
 			data_vector.push_back(stoi(line4));
 
 		}
+		
 
 	}
+
+	// To convert the vector from string to another vector of int
+
+	/*
+	for (int i = 0; i < data_vector.size(); i++)
+	{
+		istringstream data_row{ data_vector[i] };
+		string temp_data;
+
+		while (getline(data_row, temp_data, ' '))
+		{
+			data_converted.push_back(stoi(temp_data));
+		}
+			
+		
+	}
+	
+	*/
+
+
 
 	// to switch every third number from its number to zero just set that 
 	// data = 0
 
-	for (int i = 0; i < data_vector.size(); i += 3)
+	
+	
+	for (int i = 3; i < data_vector.size(); i += 3)
 	{
 		data_vector[i] = 0;
 	}
 	
+
 	infile.close();
 
 
