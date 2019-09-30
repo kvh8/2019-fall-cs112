@@ -59,7 +59,7 @@ int main(void)
 	{
 		getline(infile, line4, ' ');
 		
-		if (line4 != "")
+		if (line4 != "" && line4 != "\n")
 		{
 			data_vector.push_back(stoi(line4));
 
@@ -93,7 +93,7 @@ int main(void)
 
 	
 	
-	for (int i = 3; i < data_vector.size(); i += 3)
+	for (int i = 0; i < data_vector.size(); i += 3)
 	{
 		data_vector[i] = 0;
 	}
