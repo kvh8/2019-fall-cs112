@@ -129,6 +129,9 @@ int main(void)
 		outfile << data_vector[i] << ' ';
 	}
 
+	outfile.close();
+
+
 	//try to put it in separate rows, need every 13 for one row
 
 
