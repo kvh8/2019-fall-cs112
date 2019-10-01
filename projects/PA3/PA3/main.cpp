@@ -57,14 +57,28 @@ int main(void)
 
 	while (infile.good() == true)
 	{
-		getline(infile, line4, ' ');
+		/*
+		int value = 0;
+		infile >> value;
+		data_vector.push_back(value);
+		*/
+		// The above does the same as below
+
+		getline(infile, line4);
+		istringstream data_row{ line4 };
 		
-		if (line4 != "" && line4 != "\n")
+		while (data_row.good() == true)
 		{
-			data_vector.push_back(stoi(line4));
+			string temp_data;
+
+			getline(data_row, temp_data, ' ');
+			
+			if (temp_data.length() > 0)
+			{
+				data_vector.push_back(stoi(temp_data));
+			}
 
 		}
-		
 
 	}
 
